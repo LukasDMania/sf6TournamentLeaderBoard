@@ -1,0 +1,64 @@
+﻿@model NewLEaderboard.Models.Player
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Player</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PlayerId" />
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainCharacter" class="control-label"></label>
+                <input asp-for="MainCharacter" class="form-control" />
+                <span asp-validation-for="MainCharacter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeeksCompeted" class="control-label"></label>
+                <input asp-for="WeeksCompeted" class="form-control" />
+                <span asp-validation-for="WeeksCompeted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountFirstPlace" class="control-label"></label>
+                <input asp-for="AmountFirstPlace" class="form-control" />
+                <span asp-validation-for="AmountFirstPlace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountSecondPlace" class="control-label"></label>
+                <input asp-for="AmountSecondPlace" class="form-control" />
+                <span asp-validation-for="AmountSecondPlace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountThirdPlace" class="control-label"></label>
+                <input asp-for="AmountThirdPlace" class="form-control" />
+                <span asp-validation-for="AmountThirdPlace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPoints" class="control-label"></label>
+                <input asp-for="TotalPoints" class="form-control" />
+                <span asp-validation-for="TotalPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
