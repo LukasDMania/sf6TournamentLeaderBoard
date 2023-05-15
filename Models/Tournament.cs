@@ -7,7 +7,8 @@ public partial class Tournament
 {
     public int TournamentId { get; set; }
 
-    public string TournamentName { get; set; } = null!;
+    public string TournamentName { get; set; }
+    public string TournamentVodUrl { get; set; }
 
     public DateTime TournamentDate { get; set; }
 

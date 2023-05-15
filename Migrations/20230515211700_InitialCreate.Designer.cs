@@ -12,7 +12,7 @@ using NewLEaderboard.Models;
 namespace NewLEaderboard.Migrations
 {
     [DbContext(typeof(FgcBeTournamentDataContext))]
-    [Migration("20230513110544_InitialCreate")]
+    [Migration("20230515211700_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -32,6 +32,19 @@ namespace NewLEaderboard.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayerId"));
+
+                    b.Property<int>("AmountFirstPlace")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AmountSecondPlace")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AmountThirdPlace")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DiscordTag")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MainCharacter")
                         .IsRequired()
@@ -105,6 +118,10 @@ namespace NewLEaderboard.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TournamentVodUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TournamentId")
                         .HasName("PK__Tourname__AC6313132F987370");

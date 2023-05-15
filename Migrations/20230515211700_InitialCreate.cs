@@ -18,8 +18,12 @@ namespace NewLEaderboard.Migrations
                     PlayerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DiscordTag = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MainCharacter = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     WeeksCompeted = table.Column<int>(type: "int", nullable: false),
+                    AmountFirstPlace = table.Column<int>(type: "int", nullable: false),
+                    AmountSecondPlace = table.Column<int>(type: "int", nullable: false),
+                    AmountThirdPlace = table.Column<int>(type: "int", nullable: false),
                     TotalPoints = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -34,6 +38,7 @@ namespace NewLEaderboard.Migrations
                     TournamentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TournamentName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TournamentVodUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TournamentDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     ParticipantsAmount = table.Column<int>(type: "int", nullable: false)
                 },

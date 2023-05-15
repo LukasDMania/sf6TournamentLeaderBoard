@@ -39,6 +39,10 @@ namespace NewLEaderboard.Migrations
                     b.Property<int>("AmountThirdPlace")
                         .HasColumnType("int");
 
+                    b.Property<string>("DiscordTag")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MainCharacter")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -54,10 +58,6 @@ namespace NewLEaderboard.Migrations
 
                     b.Property<int>("WeeksCompeted")
                         .HasColumnType("int");
-
-                    b.Property<string>("discordTag")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PlayerId")
                         .HasName("PK__Player__4A4E74C8775F32F5");
@@ -115,6 +115,10 @@ namespace NewLEaderboard.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TournamentVodUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TournamentId")
                         .HasName("PK__Tourname__AC6313132F987370");
