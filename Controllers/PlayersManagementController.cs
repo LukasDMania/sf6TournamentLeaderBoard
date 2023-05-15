@@ -9,11 +9,11 @@ using NewLEaderboard.Models;
 
 namespace NewLEaderboard.Controllers
 {
-    public class PlayerManagmentController : Controller
+    public class PlayersManagementController : Controller
     {
         private readonly FgcBeTournamentDataContext _context;
 
-        public PlayerManagmentController()
+        public PlayersManagementController()
         {
             _context = new FgcBeTournamentDataContext();
         }
@@ -55,7 +55,7 @@ namespace NewLEaderboard.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlayerId,UserName,DiscordTag,MainCharacter,WeeksCompeted,AmountFirstPlace,AmountSecondPlace,AmountThirdPlace,TotalPoints")] Player player)
+        public async Task<IActionResult> Create([Bind("PlayerId,UserName,DiscordTag,MainCharacter")] Player player)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +147,6 @@ namespace NewLEaderboard.Controllers
 
             var player = await _context.Players
             .Include(p => p.Results)
-                .ThenInclude(r => r.Tournament)
             .FirstOrDefaultAsync(p => p.PlayerId == id);
 
 

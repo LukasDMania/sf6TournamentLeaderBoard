@@ -10,11 +10,11 @@ using NewLEaderboard.Models;
 
 namespace NewLEaderboard.Controllers
 {
-    public class TournamentsController : Controller
+    public class TournamentController : Controller
     {
         private readonly FgcBeTournamentDataContext _context;
 
-        public TournamentsController()
+        public TournamentController()
         {
             _context = new FgcBeTournamentDataContext();
         }

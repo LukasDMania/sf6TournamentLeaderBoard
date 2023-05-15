@@ -15,4 +15,18 @@ public partial class Tournament
     public int ParticipantsAmount { get; set; }
 
     public virtual ICollection<Result> Results { get; set; } = new List<Result>();
+
+
+    public void CalculateParticipantAmount() 
+    {
+        ParticipantsAmount = 0;
+        foreach (var item in Results)
+        {
+            if (item.TournamentId == TournamentId)
+            {
+                ParticipantsAmount++;
+            }
+        }
+    }
+
 }
