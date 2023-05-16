@@ -60,12 +60,12 @@ namespace NewLEaderboard.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ResultId,PlayerId,TournamentId,Placing,CharacterUsed")] Result result)
         {
-            if (ModelState.IsValid)
-            {
+          
+           
                 _context.Add(result);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            
             ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "PlayerId", result.PlayerId);
             ViewData["TournamentId"] = new SelectList(_context.Tournaments, "TournamentId", "TournamentId", result.TournamentId);
             return View(result);
