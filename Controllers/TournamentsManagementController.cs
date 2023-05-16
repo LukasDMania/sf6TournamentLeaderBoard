@@ -55,14 +55,14 @@ namespace NewLEaderboard.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TournamentId,TournamentName,TournamentVodUrl,TournamentDate,ParticipantsAmount")] Tournament tournament)
+        public async Task<IActionResult> Create([Bind("TournamentId,TournamentName,TournamentVodUrl,TournamentDate")] Tournament tournament)
         {
-            if (ModelState.IsValid)
-            {
+            
+                tournament.NameDateDisplay();
                 _context.Add(tournament);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            
             return View(tournament);
         }
 

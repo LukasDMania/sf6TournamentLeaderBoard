@@ -48,8 +48,8 @@ namespace NewLEaderboard.Controllers
         // GET: ResultsManagement/Create
         public IActionResult Create()
         {
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "PlayerId");
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "TournamentId", "TournamentId");
+            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "UserName");
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "TournamentId", "TournamentNameAndDateDisplay");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace NewLEaderboard.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "UserName", result.PlayerId);
+            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "PlayerId", result.PlayerId);
             ViewData["TournamentId"] = new SelectList(_context.Tournaments, "TournamentId", "TournamentId", result.TournamentId);
             return View(result);
         }
