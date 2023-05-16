@@ -1,4 +1,8 @@
-﻿html, body {
+﻿:root {
+    --GeneralWhite: #e5e5e5;
+}
+
+html, body {
     background-color: #1e1e1e;
     background: url(../img/bg.jpg) repeat center top fixed;
     background-size: cover;
@@ -11,9 +15,9 @@ a {
     color: #f00000;
 }
 
-a:hover {
-    color: #a30000;
-}
+    a:hover {
+        color: #a30000;
+    }
 
 .oswald {
     font-family: 'Oswald', sans-serif;
@@ -99,17 +103,78 @@ h1 span {
     max-width: 1000px;
 }
 
-    .leaderboard-container .jp {
-        background-image: url('img/leaderbg-jp.png');
+    .leaderboard-container .blanka {
+        background-image: url('../img/leaderboard-characters/blanka.png');
     }
 
-    .leaderboard-container .manon {
-        background-image: url('img/leaderbg-manon.png');
+    .leaderboard-container .cammy {
+        background-image: url('../img/leaderboard-characters/cammy.png');
+    }
+
+    .leaderboard-container .chunli {
+        background-image: url('../img/leaderboard-characters/chunli.png');
+    }
+
+    .leaderboard-container .deejay {
+        background-image: url('../img/leaderboard-characters/deejay.png');
+    }
+
+    .leaderboard-container .dhalsim {
+        background-image: url('../img/leaderboard-characters/dhalsim.png');
+    }
+
+    .leaderboard-container .ehonda {
+        background-image: url('../img/leaderboard-characters/ehonda.png');
+    }
+
+    .leaderboard-container .guile {
+        background-image: url('../img/leaderboard-characters/guile.png');
     }
 
     .leaderboard-container .jamie {
-        background-image: url('img/leaderbg-jamie.png');
+        background-image: url('../img/leaderboard-characters/jamie.png');
     }
+
+    .leaderboard-container .jp {
+        background-image: url('../img/leaderboard-characters/jp.png');
+    }
+
+    .leaderboard-container .juri {
+        background-image: url('../img/leaderboard-characters/juri.png');
+    }
+
+    .leaderboard-container .ken {
+        background-image: url('../img/leaderboard-characters/ken.png');
+    }
+
+    .leaderboard-container .kimberly {
+        background-image: url('../img/leaderboard-characters/kimberly.png');
+    }
+
+    .leaderboard-container .lily {
+        background-image: url('../img/leaderboard-characters/lily.png');
+    }
+
+    .leaderboard-container .luke {
+        background-image: url('../img/leaderboard-characters/luke.png');
+    }
+
+    .leaderboard-container .manon {
+        background-image: url('../img/leaderboard-characters/manon.png');
+    }
+
+    .leaderboard-container .marisa {
+        background-image: url('../img/leaderboard-characters/marisa.png');
+    }
+
+    .leaderboard-container .ryu {
+        background-image: url('../img/leaderboard-characters/ryu.png');
+    }
+
+    .leaderboard-container .zangief {
+        background-image: url('../img/leaderboard-characters/zangief.png');
+    }
+
 
 .leaderboard-item {
     display: block;
@@ -138,7 +203,7 @@ h1 span {
     transform: skew(-10deg, 0);
     padding: 7px;
     background-repeat: no-repeat;
-    background-position: top 0px right 40px;
+    background-position: top 0px right 0px;
     background-size: contain;
 }
 
@@ -174,6 +239,11 @@ h1 span {
     text-shadow: 2px 2px 0px #1e1e1e;
 }
 
+    .leaderboard-name a {
+        text-decoration: none;
+        color: var(--GeneralWhite);
+    }
+
 .leaderboard-points {
     display: block;
     font-size: 14px;
@@ -203,6 +273,10 @@ h1 span {
         .leaderboard-points img.bronze {
             filter: invert(53%) sepia(25%) saturate(693%) hue-rotate(357deg) brightness(101%) contrast(88%) drop-shadow(0px 0px 1px rgb(0 0 0 / 0.5));
         }
+
+.table th, table td {
+    color: var(--GeneralWhite);
+}
 
 @media only screen and (max-width: 768px) {
 
