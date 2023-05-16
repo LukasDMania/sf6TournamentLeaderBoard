@@ -12,68 +12,33 @@
 </head>
 
 <body>
-<h1 id="leaderboard" data-value="Leaderboard">Leaderboard</h1>
+
+    <div class="row">
+        <div class="leaderboard-container">
 
 
-    <a asp-controller="TournamentsManagement" asp-action="Index">TournamentManagement</a>
-    <a asp-action="Index" asp-controller="ResultsManagement">ResultsManagement</a>
-    <a asp-action="Index" asp-controller="PlayersManagement">PlayersManagement</a>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MainCharacter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AmountFirstPlace)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AmountSecondPlace)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AmountThirdPlace)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalPoints)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.PlayerId">@Html.DisplayFor(modelItem => item.UserName)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MainCharacter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmountFirstPlace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmountSecondPlace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmountThirdPlace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPoints)
-            </td>
-            <td>
-                @*<a asp-action="Edit" asp-route-id="@item.PlayerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PlayerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PlayerId">Delete</a>
-                <a asp-action="PlayerTournamentHistory" asp-route-playerId="@item.PlayerId">Tournament History</a>*@
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
+            @foreach (var item in Model)
+            {
+                <div class="leaderboard-item">
+                    <div class="leaderboard-content jp">
+                        <div class="leaderboard-number">
+                            <span>
+                                1
+                            </span>
+                        </div>
+                        <div class="leaderboard-name">
+                            LukasDMania
+                        </div>
+                        <div class="leaderboard-points">
+                            30000 LP
+                            <img src="img/icon-trophy.svg" class="gold">1
+                            <img src="img/icon-trophy.svg" class="silver">2
+                            <img src="img/icon-trophy.svg" class="bronze">3
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
     <script src="~/js/site.js"></script>
 </body>
