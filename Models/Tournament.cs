@@ -13,6 +13,26 @@ public partial class Tournament
     public DateTime TournamentDate { get; set; }
 
     public int ParticipantsAmount { get; set; }
+    public string TournamentNameAndDateDisplay { get; set; }
 
     public virtual ICollection<Result> Results { get; set; } = new List<Result>();
+
+
+    public void NameDateDisplay() 
+    {
+        TournamentNameAndDateDisplay = $"{TournamentName} - {TournamentDate}";
+    }
+
+    public void CalculateParticipantAmount() 
+    {
+        ParticipantsAmount = 0;
+        foreach (var item in Results)
+        {
+            if (item.TournamentId == TournamentId)
+            {
+                ParticipantsAmount++;
+            }
+        }
+    }
+
 }

@@ -8,10 +8,16 @@
 
 <p>
     <a asp-action="Create">Create New</a>
+    <a asp-action="Index" asp-controller="TournamentsManagement">TournamentManagement</a>
+    <a asp-action="Index" asp-controller="ResultsManagement">ResultsManagement</a>
+    <a asp-action="Index" asp-controller="PlayersManagement">PlayersManagement</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlayerId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
@@ -42,6 +48,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>

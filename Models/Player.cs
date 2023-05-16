@@ -21,6 +21,8 @@ public partial class Player
     public virtual ICollection<Result> Results { get; set; } = new List<Result>();
 
 
+
+
     public int CalculateTotalPoints()
     {
         int totalPoints = 0;
