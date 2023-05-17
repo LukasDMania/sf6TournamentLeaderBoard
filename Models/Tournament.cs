@@ -9,6 +9,7 @@ public partial class Tournament
 
     public string TournamentName { get; set; }
     public string TournamentVodUrl { get; set; }
+    public string ChallongeUrl { get; set; }
 
     public DateTime TournamentDate { get; set; }
 
