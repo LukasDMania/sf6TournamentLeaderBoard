@@ -22,24 +22,26 @@
             characterRemoveSpecial = Regex.Replace(characterClass, @"[\W_]", string.Empty);
             characterLowercase = characterRemoveSpecial.ToLower();
 
-            <div class="leaderboard-item">
-                <div class="leaderboard-content @characterLowercase">
-                    <div class="leaderboard-number">
-                        <span>
-                            @placingsCounter
-                        </span>
-                    </div>
-                    <div class="leaderboard-name">
-                        <a asp-action="Details" asp-route-id="@item.PlayerId">@Html.DisplayFor(modelItem => item.UserName)</a>
-                    </div>
-                    <div class="leaderboard-points">
-                        @Html.DisplayFor(modelItem => item.TotalPoints)
-                        <img src="img/icon-trophy.svg" class="gold">@Html.DisplayFor(modelItem => item.AmountFirstPlace)
-                        <img src="img/icon-trophy.svg" class="silver">@Html.DisplayFor(modelItem => item.AmountSecondPlace)
-                        <img src="img/icon-trophy.svg" class="bronze">@Html.DisplayFor(modelItem => item.AmountThirdPlace)
+            <a asp-action="Details" asp-route-id="@item.PlayerId" class="leaderboard-link">
+                <div class="leaderboard-item">
+                    <div class="leaderboard-content @characterLowercase">
+                        <div class="leaderboard-number">
+                            <span>
+                                @placingsCounter
+                            </span>
+                        </div>
+                        <div class="leaderboard-name">
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </div>
+                        <div class="leaderboard-points">
+                            @Html.DisplayFor(modelItem => item.TotalPoints)
+                            <img src="img/icon-trophy.svg" class="gold">@Html.DisplayFor(modelItem => item.AmountFirstPlace)
+                            <img src="img/icon-trophy.svg" class="silver">@Html.DisplayFor(modelItem => item.AmountSecondPlace)
+                            <img src="img/icon-trophy.svg" class="bronze">@Html.DisplayFor(modelItem => item.AmountThirdPlace)
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
             placingsCounter++;
         }
