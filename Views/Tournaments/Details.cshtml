@@ -22,13 +22,45 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TournamentDate)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TournamentVodUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TournamentVodUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChallongeUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChallongeUrl)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ParticipantsAmount)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ParticipantsAmount)
         </dd>
+        
+
     </dl>
+
+        <table>
+        @foreach (var item in ViewBag.participantsList)
+        {
+            <tr>
+                <td>
+                    @item.Placing
+                </td>
+                <td>
+                    @item.Player.UserName
+                </td>
+                <td>
+                    @item.CharacterUsed
+                </td>           
+            </tr>
+        }
+        </table>
+    
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.TournamentId">Edit</a> |

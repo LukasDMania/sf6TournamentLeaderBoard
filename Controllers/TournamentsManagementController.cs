@@ -21,8 +21,18 @@ namespace NewLEaderboard.Controllers
         // GET: TournamentManagement
         public async Task<IActionResult> Index()
         {
+
+            var tourneys = await _context.Tournaments
+                .Include(t => t.Results)
+                .ToListAsync();
+            foreach (var item in tourneys)
+            {
+                item.CalculateParticipantAmount();
+            }
+            _context.SaveChanges();
+
               return _context.Tournaments != null ? 
-                          View(await _context.Tournaments.ToListAsync()) :
+                          View(tourneys) :
                           Problem("Entity set 'FgcBeTournamentDataContext.Tournaments'  is null.");
         }
 
@@ -63,7 +73,7 @@ namespace NewLEaderboard.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             
-            return View(tournament);
+            
         }
 
         // GET: TournamentManagement/Edit/5

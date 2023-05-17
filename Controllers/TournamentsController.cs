@@ -10,11 +10,11 @@ using NewLEaderboard.Models;
 
 namespace NewLEaderboard.Controllers
 {
-    public class TournamentController : Controller
+    public class TournamentsController : Controller
     {
         private readonly FgcBeTournamentDataContext _context;
 
-        public TournamentController()
+        public TournamentsController()
         {
             _context = new FgcBeTournamentDataContext();
         }
@@ -22,8 +22,19 @@ namespace NewLEaderboard.Controllers
         // GET: Tournaments
         public async Task<IActionResult> Index()
         {
+
+            var tournaments = await _context.Tournaments
+            .Include(p => p.Results)
+                .ToListAsync();
+
+            foreach (var tournament in tournaments)
+            {
+                tournament.CalculateParticipantAmount();
+            }
+            _context.SaveChanges();
+
               return _context.Tournaments != null ? 
-                          View(await _context.Tournaments.ToListAsync()) :
+                          View(tournaments) :
                           Problem("Entity set 'FgcBeTournamentDataContext.Tournaments'  is null.");
         }
 
@@ -42,6 +53,13 @@ namespace NewLEaderboard.Controllers
                 .CountAsync(r => r.TournamentId == tournament.TournamentId);
 
             tournament.ParticipantsAmount = participantsAmount;
+
+            ViewBag.participantsList = await _context.Results
+                .Include(r => r.Player)
+            .Where(r => r.TournamentId == tournament.TournamentId)
+
+            .ToListAsync();
+
 
             if (tournament == null)
             {
