@@ -33,9 +33,9 @@ namespace NewLEaderboard.Controllers
             _context.SaveChanges();
 
 
-
+            var playersSorted = players.OrderByDescending(p => p.TotalPoints);
             return _context.Players != null ?
-                          View(players) :
+                          View(playersSorted) :
                           Problem("Entity set 'FgcBeTournamentDataContext.Players'  is null.");
         }
 
