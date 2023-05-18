@@ -1,0 +1,134 @@
+﻿@model NewLEaderboard.Models.Player
+
+@{
+    ViewData["Title"] = "Player Profile";
+    ViewData["Header"] = "Player Profile";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NewLeaderboard</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+
+<h1>Details</h1>
+
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiscordTag)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DiscordTag)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MainCharacter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MainCharacter)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WeeksCompeted)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WeeksCompeted)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmountFirstPlace)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmountFirstPlace)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmountSecondPlace)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmountSecondPlace)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmountThirdPlace)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmountThirdPlace)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalPoints)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TotalPoints)
+        </dd>
+    </dl>
+
+    <h2>Tournament History</h2>
+    @if (Model.Results.Any())
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Tournament name</th>
+                    <th>Date</th>
+                    <th>Placing</th>
+                    <th>Points Gained</th>
+                    <th>Character used</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model.Results)
+                {
+                    int pointsGained = 0;
+                    switch (result.Placing)
+                    {
+                        case 1:
+                            pointsGained = 15;
+                            break;
+                        case 2:
+                            pointsGained = 12;
+                            break;
+                        case 3:
+                            pointsGained = 10;
+                            break;
+                        case 4:
+                            pointsGained = 8;
+                            break;
+                        case 5:
+                            pointsGained = 6;
+                            break;
+                        case 7:
+                            pointsGained = 4;
+                            break;
+                        case 9:
+                            pointsGained = 2;
+                            break;
+                        default:
+                            pointsGained = 1;
+                            break;
+                    }
+                    <tr>
+                        <td><a asp-controller="Tournaments" asp-action="Details" asp-route-id="@result.Tournament.TournamentId">@result.Tournament.TournamentName</a></td>
+                        <td>@result.Tournament.TournamentDate.ToShortDateString()</td>
+                        <td>@result.Placing</td>
+                        <td>@pointsGained</td>
+                        <td>@result.CharacterUsed</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No tournament results found.</p>
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.PlayerId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
