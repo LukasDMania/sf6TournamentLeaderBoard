@@ -61,7 +61,7 @@ a:hover {
 
 .header img {
     width: 270px;
-    position: fixed;
+    position: absolute;
     top: 10px;
     left: 10px;
     /*top: -60px;
@@ -77,7 +77,7 @@ a:hover {
     display: block;
     font-size: 30px;
     margin-top: 14px;
-    position: fixed;
+    position: absolute;
     /*left: 380px;*/
     left: 300px;
     text-transform: uppercase;
