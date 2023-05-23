@@ -1,68 +1,128 @@
 ﻿@model NewLEaderboard.Models.Tournament
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Tournament Details";
+    ViewData["Header"] = "Tournament Details";
+
+    string tournamentDate = Model.TournamentDate.ToShortDateString();
+    string challongeLink = Model.ChallongeUrl + "/module";
+    string youtubeLink = "https://www.youtube.com/embed/" + Model.TournamentVodUrl;
 }
 
-<h1>Details</h1>
+<div class="playerprofile-container">
 
-<div>
-    <h4>Tournament</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TournamentName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TournamentName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TournamentDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TournamentDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TournamentVodUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TournamentVodUrl)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ChallongeUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ChallongeUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParticipantsAmount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParticipantsAmount)
-        </dd>
-        
+    <div class="playerprofile-card">
+        <div class="row">
 
-    </dl>
+            <div class="col-md-12">
 
-        <table>
-        @foreach (var item in ViewBag.participantsList)
-        {
-            <tr>
-                <td>
-                    @item.Placing
-                </td>
-                <td>
-                    @item.Player.UserName
-                </td>
-                <td>
-                    @item.CharacterUsed
-                </td>           
-            </tr>
-        }
-        </table>
-    
+                <div class="playerprofile-blackskewed" style="padding-bottom: 5px;">
+
+                    <div class="tournamentdetail-name">
+                        @Html.DisplayFor(model => model.TournamentName)
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 p-lr-20">
+
+            <div class="playerprofile-title">
+                Info
+            </div>
+
+            <div class="playerprofile-stats-content">
+                <div style="padding-top: 20px; padding-bottom: 20px;">
+                    <table>
+                        <tr>
+                            <td>
+                                <strong>
+                                    Date:
+                                </strong>
+                            </td>
+                            <td>
+                                @tournamentDate
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>
+                                    Players entered: &nbsp; &nbsp;
+                                </strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.ParticipantsAmount)
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bracketModal">
+                        View bracket
+                    </button>
+                </div>
+            </div>
+
+            <div class="playerprofile-title">
+                VOD
+            </div>
+
+            <div class="playerprofile-stats-content">
+                <div class='embed-container' style="padding-top: 0;"><iframe src='@youtubeLink' frameborder='0' allowfullscreen></iframe></div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 p-lr-20">
+
+            <div class="playerprofile-title">
+                Placings
+            </div>
+
+            <div class="tournamentdetail-placing">
+
+                @foreach (var item in ViewBag.participantsList)
+                {
+                    <a asp-controller="Players" asp-action="Details" asp-route-id="@item.PlayerId" class="leaderboard-link">
+                        <div class="tournamentdetail-placing-item">
+                            <div class="number">
+                                <span>@item.Placing</span>
+                            </div>
+                            <div class="fl-l">
+                                <strong>@item.Player.UserName</strong>
+                            </div>
+                            <div class="fl-r">
+                                @item.CharacterUsed
+                            </div>
+                        </div>
+                    </a>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.TournamentId">Edit</a> |
-    <a asp-controller="Players" asp-action="Index">Back to List</a>
+
+<div class="modal modal-xl fade" id="bracketModal" tabindex="-1" role="dialog" aria-labelledby="bracketModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bracketModalLabel"><strong>Bracket</strong></h5>
+                <button type="button" class="close btn btn-primary" data-bs-dismiss="modal" aria-bs-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 520px; overflow: hidden;">
+                <iframe src="@challongeLink" width="100%" height="600" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+            </div>
+        </div>
+    </div>
 </div>
