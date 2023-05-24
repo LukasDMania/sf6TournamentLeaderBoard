@@ -1,47 +1,73 @@
 ﻿@model IEnumerable<NewLEaderboard.Models.Tournament>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tournaments";
+    ViewData["Header"] = "Tournaments";
+
+    string tournamentDate;
 }
 
-<h1>Index</h1>
+<div class="playerprofile-container">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TournamentName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TournamentDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParticipantsAmount)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TournamentName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TournamentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParticipantsAmount)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TournamentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TournamentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TournamentId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="playerprofile-card">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="playerprofile-blackskewed" style="padding-bottom: 5px;">
+
+                    <div class="tournamentdetail-name">
+                        Past Tournaments
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="tournament-overview-list">
+
+                @foreach (var item in Model)
+                {
+
+                    tournamentDate = item.TournamentDate.ToShortDateString();
+                    <a asp-action="Details" asp-route-id="@item.TournamentId">
+                        <div class="tournament-overview-list-item">
+                            <section>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <span class="tournament-overview-list-item-name">
+                                            @Html.DisplayFor(modelItem => item.TournamentName)
+                                        </span>
+                                    </div>
+
+                                    <div class="col-md-6 tournament-overview-list-item-colright">
+                                        <span class="tournament-overview-list-item-date">
+                                            @tournamentDate
+                                        </span>
+                                        <span class="tournament-overview-list-item-participants">
+                                            @Html.DisplayFor(modelItem => item.ParticipantsAmount) Participants
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </section>
+                        </div>
+                    </a>
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
