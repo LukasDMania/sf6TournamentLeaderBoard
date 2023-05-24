@@ -65,7 +65,7 @@ namespace NewLEaderboard.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TournamentId,TournamentName,TournamentVodUrl,TournamentDate")] Tournament tournament)
+        public async Task<IActionResult> Create([Bind("TournamentId,TournamentName,TournamentVodUrl,ChallongeUrl, TournamentDate")] Tournament tournament)
         {
             
                 tournament.NameDateDisplay();
@@ -97,19 +97,19 @@ namespace NewLEaderboard.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TournamentId,TournamentName,TournamentVodUrl,TournamentDate,ParticipantsAmount")] Tournament tournament)
+        public async Task<IActionResult> Edit(int id, [Bind("TournamentId,TournamentName,TournamentVodUrl,ChallongeUrl, TournamentDate")] Tournament tournament)
         {
             if (id != tournament.TournamentId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
                 try
                 {
+                    tournament.NameDateDisplay();
                     _context.Update(tournament);
                     await _context.SaveChangesAsync();
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -123,7 +123,7 @@ namespace NewLEaderboard.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            
             return View(tournament);
         }
 
