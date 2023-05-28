@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,22 +22,29 @@ namespace NewLEaderboard.Controllers
         // GET: Players
         public async Task<IActionResult> Index()
         {
-            var players = await _context.Players.Include(p => p.Results).ToListAsync();
-
-
-            foreach (var player in players)
+            try
             {
-                player.TotalPoints = player.CalculateTotalPoints();
-                player.CalculateTotalTopThree();
-                player.WeeksCompeted = player.CalculateTotalWeeksCompeted();
+                var players = await _context.Players.Include(p => p.Results).ToListAsync();
+
+
+                foreach (var player in players)
+                {
+                    player.TotalPoints = player.CalculateTotalPoints();
+                    player.CalculateTotalTopThree();
+                    player.WeeksCompeted = player.CalculateTotalWeeksCompeted();
+                }
+                _context.SaveChanges();
+
+
+                var playersSorted = players.OrderByDescending(p => p.TotalPoints);
+                return _context.Players != null ?
+                              View(playersSorted) :
+                              Problem("Entity set 'FgcBeTournamentDataContext.Players'  is null.");
             }
-            _context.SaveChanges();
-
-
-            var playersSorted = players.OrderByDescending(p => p.TotalPoints);
-            return _context.Players != null ?
-                          View(playersSorted) :
-                          Problem("Entity set 'FgcBeTournamentDataContext.Players'  is null.");
+            catch (Exception)
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         // GET: Players/Details/5
@@ -60,116 +68,6 @@ namespace NewLEaderboard.Controllers
 
 
             return View(player);
-        }
-
-        // GET: Players/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Players/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlayerId,UserName,MainCharacter,WeeksCompeted,AmountFirstPlace,AmountSecondPlace,AmountThirdPlace,TotalPoints")] Player player)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(player);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(player);
-        }
-
-        // GET: Players/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Players == null)
-            {
-                return NotFound();
-            }
-
-            var player = await _context.Players.FindAsync(id);
-            if (player == null)
-            {
-                return NotFound();
-            }
-            return View(player);
-        }
-
-        // POST: Players/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PlayerId,UserName,MainCharacter,WeeksCompeted,AmountFirstPlace,AmountSecondPlace,AmountThirdPlace,TotalPoints")] Player player)
-        {
-            if (id != player.PlayerId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(player);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PlayerExists(player.PlayerId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(player);
-        }
-
-        // GET: Players/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Players == null)
-            {
-                return NotFound();
-            }
-
-            var player = await _context.Players
-                .FirstOrDefaultAsync(m => m.PlayerId == id);
-            if (player == null)
-            {
-                return NotFound();
-            }
-
-            return View(player);
-        }
-
-        // POST: Players/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Players == null)
-            {
-                return Problem("Entity set 'FgcBeTournamentDataContext.Players'  is null.");
-            }
-            var player = await _context.Players.FindAsync(id);
-            if (player != null)
-            {
-                _context.Players.Remove(player);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool PlayerExists(int id)
