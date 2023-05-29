@@ -6,9 +6,11 @@
     ViewData["Header"] = "Leaderboard";
 
     int placingsCounter = 1;
+    string topPlacings;
     string characterClass;
     string characterLowercase;
     string characterRemoveSpecial;
+    string topPlacingImage;
 }
 
 <div class="row">
@@ -21,13 +23,42 @@
             characterClass = item.MainCharacter;
             characterRemoveSpecial = Regex.Replace(characterClass, @"[\W_]", string.Empty);
             characterLowercase = characterRemoveSpecial.ToLower();
+            
+
+            if (placingsCounter == 1)
+            {
+                topPlacings = "placing-first";
+                topPlacingImage = "<img src='img/icon-medal-first.svg'>";
+            }
+            else if(placingsCounter == 2) {
+
+                topPlacings = "placing-second";
+                topPlacingImage = "<img src='img/icon-medal-second.svg'>";
+            }
+            else if(placingsCounter == 3) {
+
+                topPlacings = "placing-third";
+                topPlacingImage = "<img src='img/icon-medal-third.svg'>";
+            }
+            else
+            {
+                topPlacings = "";
+                topPlacingImage = "";
+            }
 
             <a asp-action="Details" asp-route-id="@item.PlayerId" class="leaderboard-link">
-                <div class="leaderboard-item">
+                <div class="leaderboard-item @topPlacings">
                     <div class="leaderboard-content @characterLowercase">
                         <div class="leaderboard-number">
                             <span>
-                                @placingsCounter
+                                @if (topPlacingImage != "")
+                                {
+                                    @Html.Raw(topPlacingImage);
+                                }
+                                else
+                                {
+                                    @Html.Raw(placingsCounter);
+                                }
                             </span>
                         </div>
                         <div class="leaderboard-name">

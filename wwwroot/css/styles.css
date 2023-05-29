@@ -359,6 +359,328 @@ h1 span {
     opacity: 0.75 !important;
 }
 
+.placing-first {
+    display: block;
+    background: rgb(200,140,31);
+    background: linear-gradient(0deg, rgba(255,207,64,1) 35%, rgba(191,155,48,1) 36%);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    transform: skew(0deg, 0);
+    transition: transform .2s; /* Animation */
+    margin-bottom: 28px;
+    overflow: hidden;
+    border-radius: 100px;
+    transform: scale(1.2);
+    overflow: visible;
+}
+
+    .placing-first .leaderboard-number {
+        /*background-color: var(--GeneralBlack);*/
+        background: #ab781f;
+        display: block;
+        float: left;
+        width: 90px;
+        height: 63px;
+        text-align: center;
+        transform: skew(10deg, 0);
+        border-radius: 100px;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
+    }
+
+        .placing-first .leaderboard-number span {
+            display: block;
+            /*transform: skew(-10deg, 0);*/
+            font-size: 40px;
+            font-weight: bold;
+            position: relative;
+            top: 1px;
+            text-shadow: 4px 3px 0px #000000;
+            color: var(--GeneralWhite);
+            overflow: visible;
+            text-align: center;
+        }
+
+
+            .placing-first .leaderboard-number span::before {
+                /*content: url(../img/icon-medal-first.svg);*/
+                /*background: url(../img/icon-medal-first.svg) repeat center top fixed;*/
+            }
+
+
+            .placing-first .leaderboard-number span img {
+                width: 100%;
+                display: block;
+                z-index: 999999999;
+                position: absolute;
+                top: -15px;
+                text-shadow: 6px 6px 6px #000000;
+                margin: 0 auto;
+            }
+
+
+
+.placing-second {
+    display: block;
+    background: rgb(200,140,31);
+    background: linear-gradient(0deg, rgba(204,204,204,1) 35%, rgba(170,170,153,1) 36%);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    transform: skew(0deg, 0);
+    transition: transform .2s; /* Animation */
+    margin-bottom: 25px;
+    overflow: hidden;
+    border-radius: 100px;
+    transform: scale(1.15);
+    overflow: visible;
+}
+
+    .placing-second .leaderboard-number {
+        /*background-color: var(--GeneralBlack);*/
+        background: #71717e;
+        display: block;
+        float: left;
+        width: 90px;
+        height: 63px;
+        text-align: center;
+        transform: skew(10deg, 0);
+        border-radius: 100px;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
+    }
+
+        .placing-second .leaderboard-number span {
+            display: block;
+            /*transform: skew(-10deg, 0);*/
+            font-size: 40px;
+            font-weight: bold;
+            position: relative;
+            top: 1px;
+            text-shadow: 4px 3px 0px #000000;
+            color: var(--GeneralWhite);
+            overflow: visible;
+            text-align: center;
+        }
+
+
+            .placing-second .leaderboard-number span::before {
+                /*content: url(../img/icon-medal-first.svg);*/
+                /*background: url(../img/icon-medal-first.svg) repeat center top fixed;*/
+            }
+
+
+            .placing-second .leaderboard-number span img {
+                width: 100%;
+                display: block;
+                z-index: 999999999;
+                position: absolute;
+                top: -15px;
+                text-shadow: 6px 6px 6px #000000;
+                margin: 0 auto;
+            }
+
+
+.placing-third {
+    display: block;
+    background: rgb(200,140,31);
+    background: linear-gradient(0deg, rgba(193,144,127.1) 35%, rgba(165,107,87.1) 36%);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    transform: skew(0deg, 0);
+    transition: transform .2s; /* Animation */
+    margin-bottom: 18px;
+    overflow: hidden;
+    border-radius: 100px;
+    transform: scale(1.1);
+    overflow: visible;
+}
+
+    .placing-third .leaderboard-number {
+        /*background-color: var(--GeneralBlack);*/
+        background: #ab781f;
+        display: block;
+        float: left;
+        width: 90px;
+        height: 63px;
+        text-align: center;
+        transform: skew(10deg, 0);
+        border-radius: 100px;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
+    }
+
+        .placing-third .leaderboard-number span {
+            display: block;
+            /*transform: skew(-10deg, 0);*/
+            font-size: 40px;
+            font-weight: bold;
+            position: relative;
+            top: 1px;
+            text-shadow: 4px 3px 0px #000000;
+            color: var(--GeneralWhite);
+            overflow: visible;
+            text-align: center;
+        }
+
+
+            .placing-third .leaderboard-number span::before {
+                /*content: url(../img/icon-medal-first.svg);*/
+                /*background: url(../img/icon-medal-first.svg) repeat center top fixed;*/
+            }
+
+
+            .placing-third .leaderboard-number span img {
+                width: 100%;
+                display: block;
+                z-index: 999999999;
+                position: absolute;
+                top: -15px;
+                text-shadow: 6px 6px 6px #000000;
+                margin: 0 auto;
+            }
+
+
+
+.leaderboard-container .placing-third .blanka,
+.leaderboard-container .placing-second .blanka,
+.leaderboard-container .placing-first .blanka {
+    background-image: url('../img/leaderboard-characters-color/blanka.png');
+}
+
+.leaderboard-container .placing-third .cammy,
+.leaderboard-container .placing-second .cammy,
+.leaderboard-container .placing-first .cammy {
+    background-image: url('../img/leaderboard-characters-color/cammy.png');
+}
+
+.leaderboard-container .placing-third .chunli,
+.leaderboard-container .placing-second .chunli,
+.leaderboard-container .placing-first .chunli {
+    background-image: url('../img/leaderboard-characters-color/chunli.png');
+}
+
+.leaderboard-container .placing-third .deejay,
+.leaderboard-container .placing-second .deejay,
+.leaderboard-container .placing-first .deejay {
+    background-image: url('../img/leaderboard-characters-color/deejay.png');
+}
+
+.leaderboard-container .placing-third .dhalsim,
+.leaderboard-container .placing-second .dhalsim,
+.leaderboard-container .placing-first .dhalsim {
+    background-image: url('../img/leaderboard-characters-color/dhalsim.png');
+}
+
+.leaderboard-container .placing-third .ehonda,
+.leaderboard-container .placing-second .ehonda,
+.leaderboard-container .placing-first .ehonda {
+    background-image: url('../img/leaderboard-characters-color/ehonda.png');
+}
+
+.leaderboard-container .placing-third .guile,
+.leaderboard-container .placing-second .guile,
+.leaderboard-container .placing-first .guile {
+    background-image: url('../img/leaderboard-characters-color/guile.png');
+}
+
+.leaderboard-container .placing-third .jamie,
+.leaderboard-container .placing-second .jamie,
+.leaderboard-container .placing-first .jamie {
+    background-image: url('../img/leaderboard-characters-color/jamie.png');
+}
+
+.leaderboard-container .placing-third .jp,
+.leaderboard-container .placing-second .jp,
+.leaderboard-container .placing-first .jp {
+    background-image: url('../img/leaderboard-characters-color/jp.png');
+}
+
+.leaderboard-container .placing-third .juri,
+.leaderboard-container .placing-second .juri,
+.leaderboard-container .placing-first .juri {
+    background-image: url('../img/leaderboard-characters-color/juri.png');
+}
+
+.leaderboard-container .placing-third .ken,
+.leaderboard-container .placing-second .ken,
+.leaderboard-container .placing-first .ken {
+    background-image: url('../img/leaderboard-characters-color/ken.png');
+}
+
+.leaderboard-container .placing-third .kimberly,
+.leaderboard-container .placing-second .kimberly,
+.leaderboard-container .placing-first .kimberly {
+    background-image: url('../img/leaderboard-characters-color/kimberly.png');
+}
+
+.leaderboard-container .placing-third .lily,
+.leaderboard-container .placing-second .lily,
+.leaderboard-container .placing-first .lily {
+    background-image: url('../img/leaderboard-characters-color/lily.png');
+}
+
+.leaderboard-container .placing-third .luke,
+.leaderboard-container .placing-second .luke,
+.leaderboard-container .placing-first .luke {
+    background-image: url('../img/leaderboard-characters-color/luke.png');
+}
+
+.leaderboard-container .placing-third .manon,
+.leaderboard-container .placing-second .manon,
+.leaderboard-container .placing-first .manon {
+    background-image: url('../img/leaderboard-characters-color/manon.png');
+}
+
+.leaderboard-container .placing-third .marisa,
+.leaderboard-container .placing-second .marisa,
+.leaderboard-container .placing-first .marisa {
+    background-image: url('../img/leaderboard-characters-color/marisa.png');
+}
+
+.leaderboard-container .placing-third .ryu,
+.leaderboard-container .placing-second .ryu,
+.leaderboard-container .placing-first .ryu {
+    background-image: url('../img/leaderboard-characters-color/ryu.png');
+}
+
+.leaderboard-container .placing-third .zangief,
+.leaderboard-container .placing-second .zangief,
+.leaderboard-container .placing-first .zangief {
+    background-image: url('../img/leaderboard-characters-color/zangief.png');
+}
+
+.leaderboard-container .placing-third:hover,
+.leaderboard-container .placing-second:hover,
+.leaderboard-container .placing-first:hover {
+    transform: scale(1.3) skew(0deg, 0);
+    -webkit-box-shadow: 0px 0px 10px 0px #747474;
+    -moz-box-shadow: 0px 0px 10px 0px #747474;
+    box-shadow: 0px 0px 10px 0px #747474;
+}
+
+.leaderboard-container .placing-third .leaderboard-content,
+.leaderboard-container .placing-second .leaderboard-content,
+.leaderboard-container .placing-first .leaderboard-content {
+    transform: skew(0deg, 0);
+    padding: 7px;
+    background-repeat: no-repeat;
+    background-position: top 0px right 0px;
+    background-size: contain;
+}
+
+.leaderboard-container .placing-third .leaderboard-number,
+.leaderboard-container .placing-second .leaderboard-number,
+.leaderboard-container .placing-first .leaderboard-number {
+    transform: skew(0deg, 0);
+}
+
+
 /* === PLAYER PROFILE ==================================== */
 
 .playerprofile-container {
